@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<TextView android:id="@+id/prompt_left_bt" style="@style/prompt_button"
+		android:visibility="gone" />
+
+	<TextView android:id="@+id/prompt_center_bt" style="@style/prompt_button"
+		android:visibility="gone" />
+
+	<TextView android:id="@+id/prompt_right_bt" style="@style/prompt_button"
+		android:layout_marginLeft="10dip" android:visibility="gone" />
+
+</merge>

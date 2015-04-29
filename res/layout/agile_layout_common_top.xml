@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        style="@style/layout_wrap_wrap"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/top_left_side_view_layout"
+            style="@style/layout_wrap_wrap"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/top_left_view"
+                style="@style/layout_wrap_wrap"
+                android:gravity="center"
+                android:textSize="14sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/top_left_second_view"
+                style="@style/layout_wrap_wrap"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:visibility="gone" >
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/top_left_third_view"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:visibility="gone" >
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/layout_wrap_wrap"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ProgressBar
+            android:id="@+id/top_loading_view"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:layout_marginRight="10dip"
+            android:visibility="gone" >
+        </ProgressBar>
+
+        <TextView
+            android:id="@+id/top_right_second_view"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginRight="10dip"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:visibility="gone" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/top_right_third_view"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginRight="10dip"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:visibility="gone" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/top_right_view"
+            style="@style/layout_wrap_wrap"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" >
+        </TextView>
+    </LinearLayout>
+    <!-- 中间的 -->
+
+    <LinearLayout
+        android:id="@+id/top_center_layout"
+        style="@style/layout_wrap_wrap"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+</RelativeLayout>

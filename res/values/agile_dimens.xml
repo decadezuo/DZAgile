@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+
+        
+    <!-- 自定义 -->
+    <dimen name="hint_y_offset">64dip</dimen>
+    <dimen name="pop_x">2.0dip</dimen>
+    <dimen name="pop_y">-20.0dip</dimen>
+    <dimen name="prompt_load_text">14sp</dimen>
+    <dimen name="magin">2dip</dimen>
+    <dimen name="teach_offsetTop">11.3dip</dimen>
+    <dimen name="item_magin">6dip</dimen>
+    <dimen name="rightmagin">-2dip</dimen>
+    <dimen name="popmenu_width">120.0dip</dimen>
+    <dimen name="popmenu_yoff">0.0dip</dimen>
+    <dimen name="album_xoff">-95.0dip</dimen>
+    <dimen name="album_yoff">-105.0dip</dimen>
+
+    <!-- pulltorefresh -->
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+
+    
+</resources>

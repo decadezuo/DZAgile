@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@android:id/background"
+        android:drawable="@color/tab_progress_layer_color"/>
+
+    <item
+        android:id="@android:id/secondaryProgress"
+        android:drawable="@color/tab_progress_layer_color"/>
+
+    <item
+        android:id="@android:id/progress"
+        android:drawable="@drawable/agile_tab_progress_bg"/>
+
+</layer-list>

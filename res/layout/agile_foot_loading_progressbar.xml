@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/agile_footer_loading_bg"
+    android:orientation="horizontal"
+    android:paddingTop="15dip"
+    android:paddingBottom="15dip"
+    android:gravity="center" >
+
+    <ImageView
+        android:id="@+id/loading_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/agile_default_ptr_rotate"
+        />
+    <TextView 
+          android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="20dip"
+        android:text="@string/data_loading"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        />
+</LinearLayout>
