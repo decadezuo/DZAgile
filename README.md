@@ -168,7 +168,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 	}
 	
 	就是这几行代码了，剩下的就不用管了。看看效果，是不是很帅啊。
-![](https://github.com/decadezuo/DZAgile/blob/master/Res/dcagile_dialog_sample.jpg)
+![](https://github.com/decadezuo/DZAgile/blob/master/Pic/dcagile_dialog_sample.jpg)
 
 ##    3、对话框
    DZAgile目前为止有4种对话框，分别为提示对话、选择对话框、操作对话、加载对话框。
@@ -183,12 +183,12 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 		DZPickDialogAdapter adapter = new DZPickDialogAdapter(this, getItems()); // 需要使用指定Adapter
 		dialog.setAdapter(adapter);// 设置选择列表数据
 
-![](https://github.com/decadezuo/DZAgile/blob/master/Res/dcagile_pick_dialog.jpg)
+![](https://github.com/decadezuo/DZAgile/blob/master/Pic/dcagile_pick_dialog.jpg)
 
 ###   3.3 操作对话框
 操作对话框需要使用`DZListDialogAdapter`适配器。
 
-![](https://github.com/decadezuo/DZAgile/blob/master/Res/dcagile_operation_dialog.jpg)      
+![](https://github.com/decadezuo/DZAgile/blob/master/Pic/dcagile_operation_dialog.jpg)      
       
  ---------------------------------------------------------------------------------------------------------------------
 
