@@ -14,10 +14,10 @@ import com.decade.agile.DZInstallApkActivity;
 import com.decade.agile.R;
 import com.decade.agile.components.DZRectToast;
 import com.decade.agile.components.DZRectToast.ToastTheme;
-import com.decade.agile.kit.DZDownloadFileAsyncTask.DCDownloadCallback;
+import com.decade.agile.kit.DZDownloadFileAsyncTask.DZDownloadCallback;
 import com.decade.framework.DZApplication;
 
-public class DZInstallApk implements DCDownloadCallback {
+public class DZInstallApk implements DZDownloadCallback {
 	private NotificationManager nm;
 	private Context _context;
 	private int noteId;

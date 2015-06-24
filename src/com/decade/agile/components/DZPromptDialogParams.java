@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.decade.agile.components.DZDialog.PromptBtnCallback;
 
 
+
 /**
  * @description: 对话框各项参数
  * @author: Decade

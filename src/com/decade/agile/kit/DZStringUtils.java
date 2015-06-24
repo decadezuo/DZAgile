@@ -3,6 +3,8 @@ package com.decade.agile.kit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.text.TextUtils;
+
 /**
  * @description: 字符串处理工具类
  * @author: Decade
@@ -247,6 +249,24 @@ public class DZStringUtils {
 			luhmSum += k;
 		}
 		return (luhmSum % 10 == 0) ? '0' : (char) ((10 - luhmSum % 10) + '0');
+	}
+
+	/**
+	 * 隐藏银行卡号，中间显示*号
+	 * @param cardNumber
+	 * @return
+	 */
+	public static String hideBandCardNumber(String cardNumber) {
+		if (TextUtils.isEmpty(cardNumber))
+			return null;
+		int length = cardNumber.length();
+		String forntSix = cardNumber.substring(0, 6);
+		String backFour = cardNumber.substring(length - 4, length);
+		String center = "";
+		for (int i = 0; i < length - 10; i++) {
+			center = center + "*";
+		}
+		return forntSix + center + backFour;
 	}
 
 }

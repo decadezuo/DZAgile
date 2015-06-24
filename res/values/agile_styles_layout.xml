@@ -56,5 +56,18 @@
         <item name="android:orientation">vertical</item>
         <item name="android:gravity">center_vertical</item>
     </style>
+    
+    <style name="main_bottom_view" parent="@style/layout_fill_wrap">
+        <item name="android:id">@id/main_bottom_view</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+    
+    <style name="main_center_view" parent="@style/layout_fill_fill">
+        <item name="android:id">@id/main_center_view</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_below">@id/main_top_view</item>
+        <item name="android:layout_above">@id/main_bottom_view</item>
+    </style>
 
 </resources>

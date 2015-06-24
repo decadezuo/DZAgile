@@ -21,6 +21,8 @@ public class DZBaseDialogParams{
 	private float _contentSize;
 	private int _contentColor;
 	private int _lineColor;
+	private int width;
+	private int height;
 
 	public String getTitle() {
 		return _title;
@@ -77,7 +79,7 @@ public class DZBaseDialogParams{
 		return _titleSize;
 	}
 
-	public void settTitleSize(float titleSize) {
+	public void setTitleSize(float titleSize) {
 		_titleSize = titleSize;
 	}
 
@@ -123,6 +125,28 @@ public class DZBaseDialogParams{
 
 	public void setLineColor(int lineColor) {
 		_lineColor = lineColor;
+	}
+
+	/**
+	 * @return the width
+	 */
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	/**
+	 * @return the height
+	 */
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
 	}
 	
 	

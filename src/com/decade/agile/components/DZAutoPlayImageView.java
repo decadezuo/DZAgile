@@ -180,10 +180,10 @@ public class DZAutoPlayImageView extends FrameLayout {
 		}
 	}
 
-	public static class DCAutoPlayAdapter extends PagerAdapter {
+	public static class DZAutoPlayAdapter extends PagerAdapter {
 		private List<View> _views;
 
-		public DCAutoPlayAdapter(List<View> views) {
+		public DZAutoPlayAdapter(List<View> views) {
 			_views = views;
 		}
 
@@ -214,16 +214,16 @@ public class DZAutoPlayImageView extends FrameLayout {
 
 	}
 
-	public static class DCAutoPlayImage extends ImageView {
+	public static class DZAutoPlayImage extends ImageView {
 
 		/**
 		 * @param context
 		 */
-		public DCAutoPlayImage(Context context) {
+		public DZAutoPlayImage(Context context) {
 			super(context);
 		}
 
-		public DCAutoPlayImage(Context context, String url, int defaultImage) {
+		public DZAutoPlayImage(Context context, String url, int defaultImage) {
 			super(context);
 			initImageView(context, url, defaultImage);
 		}

@@ -1,11 +1,13 @@
 package com.decade.agile.components;
 
-import android.app.Dialog;
-import android.content.Context;
+import android.app.Activity;
+import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
@@ -28,15 +30,26 @@ public class DZCommonDialogView extends DZBaseDialogView {
 	protected TextView prompt_right_bt;
 	protected DZPromptDialogParams _params;
 
-	public DZCommonDialogView(Context context, DZPromptDialogParams params) {
-		super(context);
+	/**
+	 * @param params
+	 */
+	public DZCommonDialogView(Activity activity, DZPromptDialogParams params) {
+		super(activity);
 		_params = params;
-		create(params);
 	}
 
-	protected void addToCenterView(LinearLayout layout) {
-		View center = View.inflate(_context, R.layout.agile_common_center_view,
-				layout);
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View view = super.onCreateView(inflater, container, savedInstanceState);
+		setBaseParams(_params);
+		return view;
+	}
+
+	protected void addToCenterView(LayoutInflater inflater,
+			LinearLayout container) {
+		View center = inflater.inflate(R.layout.agile_common_center_view,
+				container);
 		prompt_content_tv = (TextView) center.findViewById(R.id.prompt_content);
 		if (_params.getContentSize() != 0) {
 			prompt_content_tv.setTextSize(_params.getContentSize());
@@ -44,6 +57,9 @@ public class DZCommonDialogView extends DZBaseDialogView {
 		if (_params.getContentColor() != 0) {
 			prompt_content_tv.setTextColor(_params.getContentColor());
 		}
+	}
+
+	private void setContentText() {
 		if (!TextUtils.isEmpty(_params.getContent())) {
 			if (_params.getContent().contains("\n")) {
 				prompt_content_tv.setText(_params.getContent());
@@ -89,23 +105,21 @@ public class DZCommonDialogView extends DZBaseDialogView {
 		}
 	}
 
-	/**
-	 * 此方法可用来更新对话框内容提示
-	 */
 	@Override
-	public void refresh() {
-		prompt_content_tv.setText(Html.fromHtml(_params.getContent()));
+	public void onResume() {
+		super.onResume();
+		setContentText();
+		setDialogSize(_params.getWidth(),_params.getHeight());
 	}
 
 	@Override
-	protected void addToTopView(LinearLayout layout) {
-		View top = View.inflate(_context, R.layout.agile_common_top_view,
-				layout);
+	protected void addToTopView(LayoutInflater inflater, LinearLayout container) {
+		View top = inflater.inflate(R.layout.agile_common_top_view, container);
 		prompt_title_tv = (TextView) top.findViewById(R.id.prompt_title);
 		if (!TextUtils.isEmpty(_params.getTitle())) {
 			prompt_title_tv.setText(_params.getTitle());
 		} else {
-			layout.setVisibility(View.GONE);
+			container.setVisibility(View.GONE);
 		}
 
 		if (_params.getTitleSize() != 0) {
@@ -118,9 +132,10 @@ public class DZCommonDialogView extends DZBaseDialogView {
 	}
 
 	@Override
-	protected void addToBottomView(LinearLayout layout) {
-		View bottom = View.inflate(_context, R.layout.agile_common_bottom_view,
-				layout);
+	protected void addToBottomView(LayoutInflater inflater,
+			LinearLayout container) {
+		View bottom = inflater.inflate(R.layout.agile_common_bottom_view,
+				container);
 		prompt_left_bt = (TextView) bottom.findViewById(R.id.prompt_left_bt);
 		prompt_center_bt = (TextView) bottom
 				.findViewById(R.id.prompt_center_bt);
@@ -164,7 +179,7 @@ public class DZCommonDialogView extends DZBaseDialogView {
 		if (TextUtils.isEmpty(_params.getLeftBtnText())
 				&& TextUtils.isEmpty(_params.getCenterBtnText())
 				&& TextUtils.isEmpty(_params.getrRightBtnText())) {
-			layout.setVisibility(View.GONE);
+			container.setVisibility(View.GONE);
 			return;
 		}
 		setButton(_params.getLeftBtnText(), prompt_left_bt);
@@ -173,13 +188,8 @@ public class DZCommonDialogView extends DZBaseDialogView {
 
 	}
 
-	@Override
 	public DZBaseDialogParams getParams() {
 		return _params;
-	}
-	
-	public Dialog getDialog() {
-		return this;
 	}
 
 	public TextView getContentTextView() {
@@ -201,6 +211,5 @@ public class DZCommonDialogView extends DZBaseDialogView {
 	public TextView getRightButton() {
 		return prompt_right_bt;
 	}
-
 
 }

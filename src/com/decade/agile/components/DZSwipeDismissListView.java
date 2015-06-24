@@ -1,6 +1,5 @@
 package com.decade.agile.components;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -18,7 +17,6 @@ import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 
-@SuppressLint("Recycle")
 public class DZSwipeDismissListView extends ListView {
 	/**
 	 * 认为是用户滑动的最小距离

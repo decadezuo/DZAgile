@@ -11,9 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.decade.agile.R;
-import com.decade.agile.components.DZPickDialogView.DCPickItem;
+import com.decade.agile.components.DZPickDialogView.DZPickItem;
 
-public class DZPickDialogAdapter extends DZListAdapter<DCPickItem> {
+public class DZPickDialogAdapter extends DZListAdapter<DZPickItem> {
 
 	private int _indicatorImageResId;
 
@@ -21,11 +21,11 @@ public class DZPickDialogAdapter extends DZListAdapter<DCPickItem> {
 	 * @param context
 	 * @param list
 	 */
-	public DZPickDialogAdapter(Context context, List<DCPickItem> list) {
+	public DZPickDialogAdapter(Context context, List<DZPickItem> list) {
 		super(context, list);
 	}
 
-	public DZPickDialogAdapter(Context context, List<DCPickItem> list,
+	public DZPickDialogAdapter(Context context, List<DZPickItem> list,
 			int indicatorImageResId) {
 		super(context, list);
 		_indicatorImageResId = indicatorImageResId;
@@ -57,7 +57,7 @@ public class DZPickDialogAdapter extends DZListAdapter<DCPickItem> {
 		} else {
 			holder = (ViewHolder) view.getTag();
 		}
-		DCPickItem ss = _list.get(position);
+		DZPickItem ss = _list.get(position);
 		holder.title_tv.setText(ss.getTitle());
 		if (ss.isSelected()) {
 			holder.flag_ckb.setChecked(true);

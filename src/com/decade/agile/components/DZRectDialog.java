@@ -1,53 +1,56 @@
 package com.decade.agile.components;
 
-import android.content.Context;
+import android.app.Activity;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.decade.agile.R;
 
 public class DZRectDialog extends DZDialog{
 
-	private Context _context;
 	private DZBaseDialogParams _params;
 	private TextView _content_tv;
 
-	private static DZiDialog _dialog;
+	private static DZDialog _dialog;
 
-	private DZRectDialog(Context context, DZBaseDialogParams params) {
-		super(context, R.style.CustomProgressDialog);
-		_context = context;
+	private DZRectDialog(Activity activity, DZBaseDialogParams params) {
+		 super(activity);
 		_params = params;
-		 create(params);
+	}
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 	}
 
-	public synchronized static DZiDialog getInstance(Context context,
+	public synchronized static DZDialog getInstance(Activity activity,
 			DZBaseDialogParams params) {
 		if (_dialog == null) {
-			return new DZRectDialog(context, params);
+			return new DZRectDialog(activity, params);
 		}
 		return _dialog;
 	}
-
+	
 	@Override
-	public View create(DZBaseDialogParams params) {
-		View view = LayoutInflater.from(_context).inflate(
-				R.layout.agile_rect_dialog_view, null);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View view = inflater.inflate(
+				R.layout.agile_rect_dialog_view,container);
 		_content_tv = (TextView) view.findViewById(R.id.agile_tips_loading_msg_tv);
-		_content_tv.setText(_params.getContent());
-		setContentView(view);
-		setCanceledOnTouchOutside(false);
 		return view;
 	}
 
-	@Override
 	public DZBaseDialogParams getParams() {
 		return _params;
 	}
 
 	@Override
-	public void refresh() {
+	public void onResume() {
+		super.onResume();
+		getDialog().setCanceledOnTouchOutside(false);
 		_content_tv.setText(_params.getContent());
 	}
 

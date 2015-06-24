@@ -2,7 +2,7 @@ package com.decade.agile;
 
 import org.json.JSONObject;
 
-import android.content.Context;
+import android.app.Activity;
 import android.text.TextUtils;
 
 import com.decade.agile.kit.DZDialogHelper;
@@ -19,8 +19,8 @@ import com.decade.framework.network.DZRequestParams;
  */
 public abstract class DZAgileTask <Params, Progress> extends DZHttpAsyncTask<Params, Progress> {
 
-	public DZAgileTask(Context context, DZAsyncTaskParams taskParams) {
-		super(context, taskParams);
+	public DZAgileTask(Activity activity, DZAsyncTaskParams taskParams) {
+		super(activity, taskParams);
 	}
 
 	public DZiResponse doTask(String url, DZRequestParams params, int httpType) {
@@ -50,9 +50,9 @@ public abstract class DZAgileTask <Params, Progress> extends DZHttpAsyncTask<Par
 		super.onStart(openPrompt,content);
 		if (openPrompt) {
 			if (TextUtils.isEmpty(content)) {
-				DZDialogHelper.openPrompt(getContext(), DialogTheme.RECT);
+				DZDialogHelper.openPrompt(getActivity(), DialogTheme.RECT);
 			} else {
-				DZDialogHelper.openPrompt(getContext(), content,
+				DZDialogHelper.openPrompt(getActivity(), content,
 						DialogTheme.RECT);
 			}
 		}

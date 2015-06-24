@@ -3,7 +3,7 @@ package com.decade.agile;
 import java.io.File;
 import java.util.Map;
 
-import android.content.Context;
+import android.app.Activity;
 import android.text.TextUtils;
 
 import com.decade.agile.kit.DZDialogHelper;
@@ -19,8 +19,8 @@ import com.decade.framework.async.DZiResponse;
  */
 public class DZAgileFileAsyncTask extends DZFileAsyncTask<String, Integer>{
 
-	public DZAgileFileAsyncTask(Context context, DZAsyncTaskParams params) {
-		super(context, params);
+	public DZAgileFileAsyncTask(Activity activity, DZAsyncTaskParams params) {
+		super(activity, params);
 	}
 	
 	public DZiResponse doTask(String url, Map<String, String> params,
@@ -41,9 +41,9 @@ public class DZAgileFileAsyncTask extends DZFileAsyncTask<String, Integer>{
 		super.onStart(openPrompt,content);
 		if (openPrompt) {
 			if (TextUtils.isEmpty(content)) {
-				DZDialogHelper.openPrompt(getContext(), DialogTheme.RECT);
+				DZDialogHelper.openPrompt(getActivity(), DialogTheme.RECT);
 			} else {
-				DZDialogHelper.openPrompt(getContext(), content,
+				DZDialogHelper.openPrompt(getActivity(), content,
 						DialogTheme.RECT);
 			}
 		}

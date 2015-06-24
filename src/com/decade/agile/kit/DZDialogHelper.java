@@ -1,13 +1,13 @@
 package com.decade.agile.kit;
 
-import android.content.Context;
+import android.app.Activity;
 import android.text.TextUtils;
 
 import com.decade.agile.R;
 import com.decade.agile.components.DZBaseDialogParams;
+import com.decade.agile.components.DZDialog;
 import com.decade.agile.components.DZRectDialog;
 import com.decade.agile.components.DZStripDialog;
-import com.decade.agile.components.DZiDialog;
 
 /**
  * @description: 对话框辅助类
@@ -15,7 +15,7 @@ import com.decade.agile.components.DZiDialog;
  * @date: 2013-6-14
  */
 public class DZDialogHelper {
-	public static DZiDialog _dialog;
+	public static DZDialog _dialog;
 
 	/**
 	 * 创建一个加载对话框
@@ -23,24 +23,24 @@ public class DZDialogHelper {
 	 * @param context
 	 * @param content
 	 */
-	private static void createPrompt(Context context, String content,
+	private static void createPrompt(Activity activity, String content,
 			DialogTheme theme) {
 		DZBaseDialogParams params = new DZBaseDialogParams();
 		if (theme == DialogTheme.STRIP) {
 			if (TextUtils.isEmpty(content)) {
-				params.setContent(context.getString(R.string.data_loading));
+				params.setContent(activity.getString(R.string.data_loading));
 			} else {
 				params.setContent(content);
 			}
-			_dialog = DZStripDialog.getInstance(context, params);
+			_dialog = DZStripDialog.getInstance(activity, params);
 		} else if (theme == DialogTheme.RECT) {
 			if (TextUtils.isEmpty(content)) {
-				params.setContent(context
+				params.setContent(activity
 						.getString(R.string.agile_load_msg_ing));
 			} else {
 				params.setContent(content);
 			}
-			_dialog = DZRectDialog.getInstance(context, params);
+			_dialog = DZRectDialog.getInstance(activity, params);
 		}
 	}
 
@@ -49,13 +49,13 @@ public class DZDialogHelper {
 	 * 
 	 * @param context
 	 */
-	public static void openPrompt(Context context, DialogTheme theme) {
-		openPrompt(context, null, theme);
+	public static void openPrompt(Activity activity, DialogTheme theme) {
+		openPrompt(activity, null, theme);
 	}
 
-	public static void openPrompt(Context context, String content,
+	public static void openPrompt(Activity activity, String content,
 			DialogTheme theme) {
-		createPrompt(context, content, theme);
+		createPrompt(activity, content, theme);
 		openPrompt();
 	}
 	
@@ -64,7 +64,7 @@ public class DZDialogHelper {
 	 */
 	public static void openPrompt() {
 		if (_dialog != null) {
-			_dialog.open();
+			_dialog.show();
 		}
 	}
 
@@ -73,7 +73,7 @@ public class DZDialogHelper {
 	 */
 	public static void closePrompt() {
 		if (_dialog != null) {
-			_dialog.close();
+			_dialog.dismiss();
 		}
 	}
 

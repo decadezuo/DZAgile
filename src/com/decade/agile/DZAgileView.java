@@ -12,7 +12,8 @@ import com.decade.framework.async.DZiAsyncTaskCallback;
 import com.decade.framework.async.DZiResponse;
 import com.decade.framework.kit.DZBuild;
 
-public abstract class DZAgileView extends DZBaseView implements DZiAsyncTaskCallback  {
+public abstract class DZAgileView extends DZBaseView implements
+		DZiAsyncTaskCallback {
 
 	protected void open() {
 	};// 3.打开，获取数据打开视图
@@ -34,9 +35,8 @@ public abstract class DZAgileView extends DZBaseView implements DZiAsyncTaskCall
 	private final void breakTask() {
 		resetLoading();
 		setTopRightViewEnabled(true);
-		
+
 	}
-	
 
 	@Override
 	public void closeTopLoadView(int requestCode) {
@@ -49,27 +49,30 @@ public abstract class DZAgileView extends DZBaseView implements DZiAsyncTaskCall
 	}
 
 	@Override
-	public void onJsonPaserError(String message,int requestCode) {
-		if(DZBuild.isDebugMode()){
-			DZRectToast.showToastLong(getContext(), "数据解析异常!"+ message,ToastTheme.ERROR);
+	public void onJsonPaserError(String message, int requestCode) {
+		if (DZBuild.isDebugMode()) {
+			DZRectToast.showToastLong(getContext(), "数据解析异常!" + message,
+					ToastTheme.ERROR);
 
-		}else {
-			DZRectToast.showToastShort(getContext(), "数据解析异常!",ToastTheme.ERROR);
+		} else {
+			DZRectToast.showToastShort(getContext(), "数据解析异常!",
+					ToastTheme.ERROR);
 		}
 	}
 
 	@Override
 	public void onNetDisconnected(int requestCode) {
-		DZRectToast.showToastShort(getContext(), "网络连接异常!",ToastTheme.WARNING);
+		DZRectToast.showToastShort(getContext(), "网络连接异常!", ToastTheme.WARNING);
 	}
 
 	@Override
-	public void onServerResponseError(String message,int requestCode) {
-		if(DZBuild.isDebugMode()){
-			DZRectToast.showToastLong(getContext(), "请求异常!"+message,ToastTheme.ERROR);
+	public void onServerResponseError(String message, int requestCode) {
+		if (DZBuild.isDebugMode()) {
+			DZRectToast.showToastLong(getContext(), "请求异常!" + message,
+					ToastTheme.ERROR);
 
-		}else {
-			DZRectToast.showToastShort(getContext(), "请求异常!",ToastTheme.ERROR);
+		} else {
+			DZRectToast.showToastShort(getContext(), "请求异常!", ToastTheme.ERROR);
 
 		}
 	}
@@ -77,24 +80,23 @@ public abstract class DZAgileView extends DZBaseView implements DZiAsyncTaskCall
 	@Override
 	public void onComplete(DZiResponse response, int requestCode) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	
-	
+
 	@Override
 	protected void startActivity(Intent intent) {
 		super.startActivity(intent);
-		getParent().overridePendingTransition(R.anim.agile_activity_open_enter, R.anim.agile_activity_open_exit);
+		getParent().overridePendingTransition(R.anim.agile_activity_open_enter,
+				R.anim.agile_activity_open_exit);
 
 	}
 
 	@Override
 	protected boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			preViewLastPage();
-			return true;
+			return false;
 		}
 		return super.onKeyDown(keyCode, event);
 	}
+
 }

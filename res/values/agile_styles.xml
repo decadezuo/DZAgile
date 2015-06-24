@@ -16,13 +16,8 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item><!-- 窗口样式Dialog -->
         <item name="android:backgroundDimEnabled">true</item><!-- 模糊 -->
     </style>
-
-    <style name="notitle_dialog_style" parent="@style/custom_dialog_base_style">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-     <style name="CustomProgressDialog" parent="@style/custom_dialog_base_style">
+    
+     <style name="custom_progress_dialog" parent="@style/custom_dialog_base_style">
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
     </style>     
 </resources>

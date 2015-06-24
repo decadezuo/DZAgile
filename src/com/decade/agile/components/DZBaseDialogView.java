@@ -1,7 +1,10 @@
 package com.decade.agile.components;
 
-import android.content.Context;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
@@ -17,29 +20,41 @@ import com.decade.framework.DZApplication;
 
 public abstract class DZBaseDialogView extends DZDialog {
 
-	public Context _context;
-	public View _baseView;
+	protected View root_view;
+	protected View line_lat;
+	protected LinearLayout top_layout;
+	protected LinearLayout center_layout;
+	protected LinearLayout bottom_layout;
 
-	public DZBaseDialogView(Context context) {
-		super(context, R.style.notitle_dialog_style);
-		_context = context;
+	/**
+	 * @param activity
+	 */
+	public DZBaseDialogView(Activity activity) {
+		super(activity);
 	}
 
 	@Override
-	public View create(DZBaseDialogParams params) {
-		_baseView = View.inflate(_context, R.layout.agile_base_dialog_view,
-				null);
-		LinearLayout top_layout = (LinearLayout) _baseView
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		root_view = inflater
+				.inflate(R.layout.agile_base_dialog_view, container);
+		top_layout = (LinearLayout) root_view
 				.findViewById(R.id.base_dialog_top_layout);
-		View line_lat = (View) _baseView
-				.findViewById(R.id.base_dialog_line_lat);
-		LinearLayout center_layout = (LinearLayout) _baseView
+		line_lat = (View) root_view.findViewById(R.id.base_dialog_line_lat);
+		center_layout = (LinearLayout) root_view
 				.findViewById(R.id.base_dialog_center_layout);
-		LinearLayout bottom_layout = (LinearLayout) _baseView
+		bottom_layout = (LinearLayout) root_view
 				.findViewById(R.id.base_dialog_bottom_layout);
+		addToTopView(inflater, top_layout);
+		addToCenterView(inflater, center_layout);
+		addToBottomView(inflater, bottom_layout);
+		return root_view;
+	}
+
+	protected void setBaseParams(DZBaseDialogParams params) {
 
 		if (params.getDialogBgResId() != 0) {
-			_baseView.setBackgroundResource(params.getDialogBgResId());
+			root_view.setBackgroundResource(params.getDialogBgResId());
 		}
 		if (params.getTopViewBgColor() != 0) {
 			top_layout.setBackgroundColor(params.getTopViewBgColor());
@@ -53,53 +68,53 @@ public abstract class DZBaseDialogView extends DZDialog {
 		if (params.getLineColor() != 0) {
 			line_lat.setBackgroundColor(params.getLineColor());
 		}
-		addToTopView(top_layout);
-		addToCenterView(center_layout);
-		addToBottomView(bottom_layout);
-		setContentView(_baseView);
-		return _baseView;
+		if(params.getWidth() == 0){
+			params.setWidth(getDefaultDialogWidth());
+		}
+		if (params.getHeight() == 0) {
+			params.setHeight(getDefaultDialogHeight());
+		}
 	}
 
 	/**
 	 * 设置对话框的大小
-	 * 
 	 * @param width
 	 * @param height
 	 */
+
 	public void setDialogSize(int width, int height) {
-		Window w = getWindow();
-		WindowManager.LayoutParams wl = w.getAttributes();
-		wl.width = width;
-		wl.height = height;
-		w.setAttributes(wl);
+		getDialog().getWindow().setLayout(width, height);
 	}
 
 	public void setDialogHeight(int height) {
-		Window w = getWindow();
+		Window w = getDialog().getWindow();
 		WindowManager.LayoutParams wl = w.getAttributes();
 		wl.height = height;
 		w.setAttributes(wl);
 	}
 
 	public void setDialogWidth(int width) {
-		Window w = getWindow();
+		Window w = getDialog().getWindow();
 		WindowManager.LayoutParams wl = w.getAttributes();
 		wl.width = width;
 		w.setAttributes(wl);
 	}
 
 	public int getDefaultDialogWidth() {
-		return DZApplication.getApp().getWorkSpaceWidth() - 60;
+		return DZApplication.getApp().getWorkSpaceWidth() - 40;
 	}
 
 	public int getDefaultDialogHeight() {
 		return DZApplication.getApp().getWorkSpaceHeight() / 4 * 1;
 	}
 
-	protected abstract void addToTopView(LinearLayout layout);
+	protected abstract void addToTopView(LayoutInflater inflater,
+			LinearLayout container);
 
-	protected abstract void addToCenterView(LinearLayout layout);
+	protected abstract void addToCenterView(LayoutInflater inflater,
+			LinearLayout container);
 
-	protected abstract void addToBottomView(LinearLayout layout);
+	protected abstract void addToBottomView(LayoutInflater inflater,
+			LinearLayout container);
 
 }

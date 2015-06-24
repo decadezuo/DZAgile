@@ -1,8 +1,10 @@
 package com.decade.agile.components;
 
-import android.content.Context;
+import android.app.Activity;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
@@ -18,39 +20,35 @@ import com.decade.agile.R;
  */
 public class DZStripDialog extends DZDialog {
 
-	private Context _context;
 	private DZBaseDialogParams _params;
 	private TextView _content_tv;
-	private static DZStripDialog _dialog;
+	private static DZDialog _dialog;
 
-	private DZStripDialog(Context context, DZBaseDialogParams params) {
-		super(context, R.style.CustomProgressDialog);
-		_context = context;
+	private DZStripDialog(Activity activity, DZBaseDialogParams params) {
+		super(activity);
 		_params = params;
-		 create(params);
 	}
 
-	public synchronized static  DZiDialog getInstance(Context context,
+	public synchronized static DZDialog getInstance(Activity activity,
 			DZBaseDialogParams params) {
 		if (_dialog == null) {
-			return new DZStripDialog(context, params);
+			return new DZStripDialog(activity, params);
 		}
 		return _dialog;
 	}
 
 	@Override
-	public View create(DZBaseDialogParams params) {
-		View view = LayoutInflater.from(_context).inflate(
-				R.layout.agile_strip_dialog_view, null);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.agile_strip_dialog_view,
+				container);
 		_content_tv = (TextView) view.findViewById(R.id.tv_msg);
-		_content_tv.setText(_params.getContent());
 		ImageView img_loading = (ImageView) view.findViewById(R.id.img_load);
 		RelativeLayout img_close = (RelativeLayout) view
 				.findViewById(R.id.img_cancel);
 		RotateAnimation rotateAnimation = (RotateAnimation) AnimationUtils
-				.loadAnimation(_context, R.anim.agile_strip_dialog_refresh); // 加载动画
+				.loadAnimation(_activity, R.anim.agile_strip_dialog_refresh); // 加载动画
 		img_loading.setAnimation(rotateAnimation);
-		setContentView(view);
 		img_close.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				dismiss();
@@ -59,13 +57,14 @@ public class DZStripDialog extends DZDialog {
 		return view;
 	}
 
-	@Override
 	public DZBaseDialogParams getParams() {
 		return _params;
 	}
 
 	@Override
-	public void refresh() {
+	public void onResume() {
+		super.onResume();
+		getDialog().setCanceledOnTouchOutside(false);
 		_content_tv.setText(_params.getContent());
 	}
 

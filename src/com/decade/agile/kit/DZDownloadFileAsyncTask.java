@@ -30,11 +30,11 @@ public class DZDownloadFileAsyncTask extends
 	public static final int UNDONE = 0;
 	public static final int ERROR = -1;
 	private String _url;
-	private DCDownloadCallback _callback;
+	private DZDownloadCallback _callback;
 	private File apkfile;
 	private Context _context;
 
-	public DZDownloadFileAsyncTask(String url, DCDownloadCallback callback) {
+	public DZDownloadFileAsyncTask(String url, DZDownloadCallback callback) {
 		_context = DZApplication.getAppContext();
 		_url = url;
 		_callback = callback;
@@ -141,7 +141,7 @@ public class DZDownloadFileAsyncTask extends
 		interceptFlag = false;
 	}
 
-	public interface DCDownloadCallback {
+	public interface DZDownloadCallback {
 		public void onDownloadStart();
 
 		public void onDownload(int progress);

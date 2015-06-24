@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.decade.agile.R;
-import com.decade.agile.components.DZPickDialogView.DCPickItem;
+import com.decade.agile.components.DZPickDialogView.DZPickItem;
 
-public class DZListDialogAdapter extends DZListAdapter<DCPickItem> {
+public class DZListDialogAdapter extends DZListAdapter<DZPickItem> {
 
 	/**
 	 * @param context
 	 * @param list
 	 */
-	public DZListDialogAdapter(Context context, List<DCPickItem> list) {
+	public DZListDialogAdapter(Context context, List<DZPickItem> list) {
 		super(context, list);
 	}
 
@@ -34,7 +34,7 @@ public class DZListDialogAdapter extends DZListAdapter<DCPickItem> {
 		} else {
 			holder = (ViewHolder) view.getTag();
 		}
-		DCPickItem item = _list.get(position);
+		DZPickItem item = _list.get(position);
 		holder.title_tv.setText(item.getTitle());
 		return view;
 	}
